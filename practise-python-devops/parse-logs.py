@@ -9,6 +9,7 @@ for line in data:      #iterating character by character, all file is a string a
 #so here all data of file is being put as a string in data variable using f.read()
 patt= r"(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})(?:\d+)?"
 ip_list = []
+dict_hit = {}
 with open('lb-logs.log','r') as f_line:
     for line in f_line:                         #line by line iteration
 #        print(line)
@@ -24,3 +25,13 @@ print("ips we are getting hits from : ", unique_ips)
 
 
 ## next how many hits from 1 ip
+
+for ip in ip_list:
+    if ip in dict_hit:
+        dict_hit[ip] +=1
+    else:
+        dict_hit[ip] = 1
+
+print(dict_hit)
+
+#print ip with highest hit
